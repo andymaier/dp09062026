@@ -1,0 +1,16 @@
+openapi: '3.0.3'
+info:
+  title: Katalog API
+  version: '1.0'
+servers:
+  - url: http://localhost:50001
+tags:
+  - name: Shop
+paths:
+  /articles:
+    get:
+      tags:
+        - Shop
+      responses:
+        '200':
+          description: OK

@@ -2,6 +2,11 @@ openapi: '3.0.3'
 info:
   title: Katalog API
   version: '1.0'
+  contact:
+    email: teste@irgendwas.de
+    name: Otto franz
+    url: https://egal.de
+  description: tolle api
 servers:
   - url: http://localhost:50001
 tags:
@@ -18,13 +23,18 @@ paths:
           description: OK
           content:
             application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Article'
+              schema:                
+                $ref: '#/components/schemas/ArticleResponse'
 
 components:
   schemas:
+    ArticleResponse:
+      type: object
+      properties:
+        list_of_articles:
+          type: array
+          items:
+            $ref: '#/components/schemas/Article'
     Article:
       type: object
       properties:

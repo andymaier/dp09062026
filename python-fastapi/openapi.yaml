@@ -1,0 +1,57 @@
+openapi: 3.0.3
+info:
+  title: Katalog API
+  version: "1.0"
+servers:
+- url: http://localhost:50001
+tags:
+- name: Shop
+paths:
+  /articles:
+    get:
+      description: Alle Artikel werden zurückgegeben
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/Article"
+                type: array
+          description: OK
+      summary: Gebe alle Artikel zurück
+      tags:
+      - Shop
+components:
+  schemas:
+    Article:
+      example:
+        price: 0.99
+        name: Kirschen
+        id: af035356-ead9-4ec1-a8c1-bc6e957cb145
+      properties:
+        id:
+          description: id des objekts
+          example: af035356-ead9-4ec1-a8c1-bc6e957cb145
+          format: uuid
+          maxLength: 36
+          title: id
+          type: string
+        name:
+          description: Der Produktname!
+          example: Kirschen
+          maxLength: 50
+          title: name
+          type: string
+        price:
+          description: Preis für den Artikel
+          example: 0.99
+          format: double
+          minimum: 0
+          title: price
+          type: number
+      required:
+      - name
+      - price
+      title: Article
+      type: object

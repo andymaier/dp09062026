@@ -9,8 +9,43 @@ tags:
 paths:
   /articles:
     get:
+      summary: Gebe alle Artikel zurück
+      description: Alle Artikel werden zurückgegeben
       tags:
         - Shop
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Article'
+
+components:
+  schemas:
+    Article:
+      type: object
+      properties:
+        id:
+          type: string
+          maxLength: 36
+          example: af035356-ead9-4ec1-a8c1-bc6e957cb145
+          description: id des objekts
+          format: uuid
+        name:
+          type: string
+          maxLength: 50
+          example: Kirschen
+          description: Der Produktname!
+        price:
+          type: number
+          format: double
+          minimum: 0
+          example: 0.99
+          description: Preis für den Artikel
+      required:
+        - name
+        - price
+
